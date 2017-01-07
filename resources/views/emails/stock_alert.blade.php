@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stock Alert {{$data->stock}}</title>
+	<title>Stock Alert {{$stock->stock}}</title>
 </head>
 <body>
 <table>
 	<tr>
 		<th>Stock</th>
-		<td>{{$data->stock}}</td>
+		<td>{{$stock->stock}}</td>
 	</tr>
 	<tr>
 		<th>Percent</th>
@@ -15,7 +15,7 @@
 	</tr>
 	<tr>
 		<th>Current Price</th>
-		<td>{{$data->currentprice}}</td>
+		<td>{{$stock->currentprice}}</td>
 	</tr>
 </table>
 </body>

@@ -18,6 +18,7 @@ class CreateStocksTable extends Migration
             $table->decimal('buyprice', 10, 2)->nullable();
             $table->decimal('todaysprice', 10, 2)->nullable();
             $table->decimal('currentprice', 10, 2)->nullable();
+            $table->decimal('maxgain', 10, 2)->nullable();
             $table->boolean('email')->default(false)->nullable();
             $table->timestamps();
         });

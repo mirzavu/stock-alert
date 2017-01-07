@@ -4,6 +4,7 @@ namespace App\Mailers;
 
 use Illuminate\Contracts\Mail\Mailer;
 use App\Stock;
+use Log;
 
 class AppMailer
 {
@@ -63,6 +64,7 @@ class AppMailer
      */
     public function sendEmailStockUpdate(Stock $stock, $diff_percent)
     {
+        Log::info($stock);
         $this->to = 'mirza.ekm@gmail.com';
         $this->subject = 'Stock Alert';
         $this->view = 'emails.stock_alert';

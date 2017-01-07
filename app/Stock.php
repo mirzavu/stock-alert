@@ -25,7 +25,7 @@ class Stock extends Model
      *
      * @var array
      */
-    protected $fillable = ['stock', 'buyprice', 'todaysprice', 'currentprice', 'email'];
+    protected $fillable = ['stock', 'buyprice', 'todaysprice', 'currentprice', 'email', 'maxgain'];
 
     public function setBuypriceAttribute($value)
     {

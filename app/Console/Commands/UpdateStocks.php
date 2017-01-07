@@ -21,7 +21,7 @@ class UpdateStocks extends Command
      *
      * @var string
      */
-    protected $description = 'Update stcks with current value';
+    protected $description = 'Send stock gain loss alert email';
 
     /**
      * Create a new command instance.
@@ -58,14 +58,26 @@ class UpdateStocks extends Command
             if(empty($current))
                 continue;
             $stock->currentprice = $current;
-            if(!empty($stock->todaysprice) && $stock->email == false)
+            if($stock->email == false)
             {
-                $diff = $stock->todaysprice - $current;
+                $diff =  $current - $stock->buyprice;
                 $diff_perc = ($diff*100)/$stock->buyprice;
-                if($diff_perc < -0.6)
+                if($diff_perc < -0.5)
                 {
                     $mailer->sendEmailStockUpdate($stock, $diff_perc);
                     $stock->email = true;
+                }
+                elseif ($diff_perc > 0.5) {
+                    if(empty($stock->maxgain) || $stock->maxgain < $diff_perc)
+                    {
+                        $stock->maxgain = $diff_perc;
+                    }
+                    $realtime_diff = $stock->maxgain - $diff_perc;
+                    if($realtime_diff > 0.5)
+                    {
+                        $mailer->sendEmailStockUpdate($stock, $diff_perc);
+                        $stock->email = true;
+                    }
                 }
             }
             $stock->save();
