@@ -15,14 +15,14 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th> Stock </th><th> Buyprice </th><th> Todaysprice </th><th> Current price </th><th>Actions</th>
+                                        <th>ID</th><th> Stock </th><th> Buyprice </th><th> Todaysprice </th><th> Current price </th><th> Max gain </th><th> Email </th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($stocks as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->stock }}</td><td>{{ $item->buyprice }}</td><td>{{ $item->todaysprice }}</td><td>{{ $item->currentprice }}</td>
+                                        <td>{{ $item->stock }}</td><td>{{ $item->buyprice }}</td><td>{{ $item->todaysprice }}</td><td>{{ $item->currentprice }}</td><td>{{ $item->maxgain }}</td><td>{{ $item->email }}</td>
                                         <td>
                                             <a href="{{ url('/stocks/' . $item->id) }}" class="btn btn-success btn-xs" title="View Stock"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                                             <a href="{{ url('/stocks/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Stock"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
