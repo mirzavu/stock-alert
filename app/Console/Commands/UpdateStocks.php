@@ -79,6 +79,14 @@ class UpdateStocks extends Command
                         $stock->email = true;
                     }
                 }
+                else
+                {
+                    if($stock->maxgain && ($stock->maxgain - $diff_perc) > 0.5)
+                    {
+                        $mailer->sendEmailStockUpdate($stock, $diff_perc);
+                        $stock->email = true;
+                    }
+                }
             }
             $stock->save();
         }
